@@ -35,3 +35,16 @@ function checkTime() {
     }
 };
 
+$( '.save-button').click((function(event){
+    let textAreaId = (event.target.id + 'a');
+    let textAreaValue = $( '#'+ textAreaId).val();
+
+    localStorage.setItem(textAreaId, textAreaValue);
+}));
+
+$( document ).ready(function(event){
+    for (let hourBlock = 9; hourBlock < 18; hourBlock++){
+        let textAreaId = hourBlock + 'a';
+        $( '#' + textAreaId).val(localStorage.getItem(textAreaId)); 
+    }
+});
